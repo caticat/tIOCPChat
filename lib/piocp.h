@@ -7,7 +7,7 @@
 /*
 	// 完成端口测试
 	PIOCP iocp;
-	if (!iocp.Start(12345,callBackFunc))
+	if (!iocp.Start(12345,callBackFunc,onCloseFunc))
 	{
 	printf_s("服务器启动失败！\n");
 	return 2;
@@ -35,6 +35,11 @@
 	pmsg>>msg>>id>>id;
 	cout << "proto:" << pmsg.GetProto() << ",dataLen:" << dataLen << ",len:" << pmsg.GetDataLen() << ",data:" << msg << ",id:" << id << endl;
 	pPSock->Send(data,dataLen);
+	}
+
+	void onCloseFunc(PSocket* pPSock,uint16 closeType)
+	{
+	printf_s("客户端主动对出了，sock：%d,closeType:%d\n",pPSock->sock,closeType);
 	}
 */
 
